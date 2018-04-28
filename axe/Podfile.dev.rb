@@ -7,6 +7,6 @@ target 'Demo' do
   # use_frameworks!
 
   
-  pod 'Ground/release' , '0.0.1'
-  pod 'Login/release' , '0.0.1'
+  pod 'Ground/release' , '>= 0.0.1-beta.0', '< 0.0.1'
+  pod 'Login/release' , '>= 0.0.1-beta.0', '< 0.0.1'
 end
