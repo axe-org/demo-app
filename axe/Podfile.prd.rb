@@ -8,6 +8,6 @@ target 'Demo' do
 
   
   pod 'Ground/release' , '0.0.1'
-  pod 'Login/release' , '0.0.1'
+  pod 'Login/release' , '0.0.2'
   pod 'User/release' , '0.0.2'
 end
