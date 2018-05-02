@@ -1,4 +1,6 @@
 digraph G {
-  "Demo(0.1.0)" -> "Ground(0.0.1-beta.1)" [ label = "(< 0.0.1, >= 0.0.1-beta.0)" ];
+  "User(0.0.2-beta.2)" -> "Login(0.0.1-beta.7)" [ label = "(< 1.0.0, >= 0.0.1-beta.0)" ];
+  "Demo(0.1.0)" -> "Ground(0.0.1-beta.2)" [ label = "(< 0.0.1, >= 0.0.1-beta.0)" ];
   "Demo(0.1.0)" -> "Login(0.0.1-beta.7)" [ label = "(< 0.0.1, >= 0.0.1-beta.0)" ];
+  "Demo(0.1.0)" -> "User(0.0.2-beta.2)" [ label = "(< 0.0.2, >= 0.0.2-beta.0)" ];
 }
