@@ -5,7 +5,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'Demo' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
+  # 非axe管理的一些全局的组件。
+  pod 'Bugly'
 
+  # axe管理的组件
   
   pod 'Ground/release' , '>= 0.0.1-beta.0', '< 0.0.1'
   pod 'Login/release' , '>= 0.0.2-beta.0', '< 0.0.2'

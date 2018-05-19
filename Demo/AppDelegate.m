@@ -20,7 +20,7 @@
 #import "AXEDynamicRouter.h"
 #import "AXEReactViewController.h"
 #import "OPOfflineManager.h"
-
+#import <Bugly/Bugly.h>
 #import <Login/API.h>
 #import <Test/API.h>
 
@@ -68,6 +68,11 @@
         itemc.normalIcon = [UIImage imageNamed:@"react"];
         [AXETabBarController registerTabBarItem:itemc];
     } priority:DEMOGROUND_MODULE_INIT_PRIORITY];
+    // 对于不重要的组件，进行异步初始化。
+    [AXEAutoreleaseEvent registerSerialListenerForEventName:AXEEventModulesBeginInitializing handler:^(AXEData *payload) {
+        [Bugly startWithAppId:@"dcbf19ec4e"];
+    } priority:AXEEventDefaultPriority];
+    
     // 通过通知，实现模块自注册 ， 依次初始化。
     [AXEModuleInitializerManager initializeModules];
     
