@@ -8,11 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AXETabBarController.h"
-
-#import "ViewController.h"
-
 #import "Axe.h"
-
 #import "AXEWebViewController.h"
 #import "AXEWKWebViewController.h"
 #import "AXEReactViewController.h"
@@ -21,6 +17,12 @@
 #import "AXEOfflineReactViewController.h"
 #import <React/UIView+React.h>
 #import "DemoGround.h"
+#import "AXEDynamicRouter.h"
+#import "AXEReactViewController.h"
+#import "OPOfflineManager.h"
+#import <Bugly/Bugly.h>
+#import <Login/API.h>
+#import <Test/API.h>
 
 @interface AppDelegate ()
 
@@ -31,48 +33,49 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
-    NSLog(@"--- %@",@([[NSDate date] timeIntervalSince1970] * 1000));
+    // 跟随APP打包的 离线包，需要指明文件名。
+    [OPOfflineManager sharedManager].buildInModules = @[@"test-h5.zip", @"test-react.zip"];
 
+    
     [AXEAutoreleaseEvent registerSyncListenerForEventName:AXEEventModulesBeginInitializing handler:^(AXEData *payload) {
-        [[AXERouter sharedRouter] registerPagePath:@"a" withRouterForVCBlock:^UIViewController *(AXEData *params,AXERouterCallbackBlock callback) {
-            ViewController *vc = [[ViewController alloc] init];
-            UINavigationController *nv = [[UINavigationController alloc] initWithRootViewController:vc];
-            return nv;
-        }];
-        [[AXERouter sharedRouter] registerPagePath:@"b" withRouterForVCBlock:^UIViewController *(AXEData *params,AXERouterCallbackBlock callback) {
-            ViewController *vc = [[ViewController alloc] init];
-            return vc;
-        }];
-        AXETabBarItem *itema = [AXETabBarItem itemWithPagePath:@"A" routURL:@"axe://a"];
-        itema.title = @"A";
+        // 测试时，通过默认值固定动态路由映射规则。 动态切换模块实现。
+        NSDictionary *defaultSetting = @{
+                                         //@"login": @"https://demo.axe-org.cn/login-h5/#/", // 线上h5的login
+                                         @"login":@"axe://login/", // 本地的原生login
+                                         //@"login":@"reacts://demo.axe-org.cn/login-react/bundle.js?module=" // 线上的react-native版本的login模块
+                                         //@"login":@"react://192.168.1.3:8081/index.bundle?platform=ios&module="
+                                         };
+        [[AXEDynamicRouter sharedDynamicRouter] setupWithURL:nil defaultSetting:defaultSetting];
+//        [[AXEDynamicRouter sharedDynamicRouter] setupWithURL:@"https://dynamic.demo.axe-org.cn/query" defaultSetting:defaultSetting];
+        
+        
+        // 设置 tabbarController
+        // 第一个为 原生的Test模块
+        AXETabBarItem *itema = [AXETabBarItem itemWithPath:TEST_TABROUTER_PATH viewRoute:TEST_ROUTER_HOME];
+        itema.title = @"ios";
+        itema.normalIcon = [UIImage imageNamed:@"ios"];
         [AXETabBarController registerTabBarItem:itema];
-        AXETabBarItem *itemb = [AXETabBarItem itemWithPagePath:@"B" routURL:@"ophttp://vmuapp/index.html#/feteamdevnav"];
-        itemb.title = @"B";
+        // 第二个为 使用离线包的h5版本的Test模块
+        AXETabBarItem *itemb = [AXETabBarItem itemWithPath:@"html" viewRoute:@"ophttp://h5test/home"];
+//        AXETabBarItem *itemb = [AXETabBarItem itemWithPath:@"html" viewRoute:@"http://localhost:8080/#/home"];
+        itemb.title = @"html";
+        itemb.normalIcon = [UIImage imageNamed:@"html"];
         [AXETabBarController registerTabBarItem:itemb];
-        
-        AXETabBarItem *itemc = [AXETabBarItem itemWithPagePath:@"C" routURL:@"opreact://react/bundle.js?_moduleName=Awesome"];
-        itemc.title = @"echo";
+        // 第三个为 使用离线包的react-native版本的Test模块
+//        AXETabBarItem *itemc = [AXETabBarItem itemWithPath:@"react" viewRoute:@"react://192.168.1.3:8081/index.bundle?platform=ios&module=home"];
+        AXETabBarItem *itemc = [AXETabBarItem itemWithPath:@"react" viewRoute:@"oprn://reacttest/home"];
+        itemc.title = @"react";
+        itemc.normalIcon = [UIImage imageNamed:@"react"];
         [AXETabBarController registerTabBarItem:itemc];
-        
     } priority:DEMOGROUND_MODULE_INIT_PRIORITY];
-
-    [AXEAutoreleaseEvent registerSyncListenerForEventName:AXEEventModulesBeginInitializing handler:^(AXEData *payload) {
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        AXETabBarController *rootViewController = [AXETabBarController TabBarController];
-        self.window.rootViewController = rootViewController;
-        [self.window makeKeyAndVisible];
-    } priority:DEMOGROUND_MODULE_INIT_PRIORITY - 1];
-
+    // 对于不重要的组件，进行异步初始化。
+    [AXEAutoreleaseEvent registerSerialListenerForEventName:AXEEventModulesBeginInitializing handler:^(AXEData *payload) {
+        [Bugly startWithAppId:@"dcbf19ec4e"];
+    } priority:AXEEventDefaultPriority];
+    
+    // 通过通知，实现模块自注册 ， 依次初始化。
     [AXEModuleInitializerManager initializeModules];
     
-    //react://localhost:8081/index.bundle?platform=ios&_moduleName=Awesome
-    [AXEEvent registerListenerForEventName:@"event_test" handler:^(AXEData *payload) {
-        NSLog(@"payload 里面带有时间 为 %@",[payload dateForKey:@"now_date"]);
-    }];
-
-    NSLog(@"--- %@",@([[NSDate date] timeIntervalSince1970] * 1000));
     return YES;
 }
 

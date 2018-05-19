@@ -57,11 +57,13 @@ fastlane axe_import_module
 ```
 `axe_import_module` : 负责APP中接入 组件模块。
 
-使用 Podfile.rb文件！！！
+使用 Podfile.rb文件！！ 
 
 参数：
 
-dependency : json字符串，如 {"a":"1.1.1"}
+import : 新引入模块，json字符串，如 {"a":"1.1.1"} ， key为模块名，value为版本号
+
+remove : 删除的模块，json字符串，如 ["a","b"] 
 ### axe_init_module
 ```
 fastlane axe_init_module

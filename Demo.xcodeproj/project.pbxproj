@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2833595D20AEAD4F002E2A42 /* test-h5.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2833595B20AEAD4F002E2A42 /* test-h5.zip */; };
+		2833595E20AEAD4F002E2A42 /* test-react.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2833595C20AEAD4F002E2A42 /* test-react.zip */; };
 		283B8A652053730100681FA0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 283B8A642053730100681FA0 /* AppDelegate.m */; };
-		283B8A682053730100681FA0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283B8A672053730100681FA0 /* ViewController.m */; };
 		283B8A6D2053730100681FA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 283B8A6C2053730100681FA0 /* Assets.xcassets */; };
 		283B8A702053730100681FA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 283B8A6E2053730100681FA0 /* LaunchScreen.storyboard */; };
 		283B8A732053730100681FA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 283B8A722053730100681FA0 /* main.m */; };
@@ -16,11 +17,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2833595B20AEAD4F002E2A42 /* test-h5.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "test-h5.zip"; sourceTree = "<group>"; };
+		2833595C20AEAD4F002E2A42 /* test-react.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "test-react.zip"; sourceTree = "<group>"; };
 		283B8A602053730100681FA0 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		283B8A632053730100681FA0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		283B8A642053730100681FA0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		283B8A662053730100681FA0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		283B8A672053730100681FA0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		283B8A6C2053730100681FA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		283B8A6F2053730100681FA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		283B8A712053730100681FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +44,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2833595A20AEAD4F002E2A42 /* offlinePackage */ = {
+			isa = PBXGroup;
+			children = (
+				2833595B20AEAD4F002E2A42 /* test-h5.zip */,
+				2833595C20AEAD4F002E2A42 /* test-react.zip */,
+			);
+			path = offlinePackage;
+			sourceTree = "<group>";
+		};
 		283B8A572053730100681FA0 = {
 			isa = PBXGroup;
 			children = (
@@ -64,10 +74,9 @@
 		283B8A622053730100681FA0 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				2833595A20AEAD4F002E2A42 /* offlinePackage */,
 				283B8A632053730100681FA0 /* AppDelegate.h */,
 				283B8A642053730100681FA0 /* AppDelegate.m */,
-				283B8A662053730100681FA0 /* ViewController.h */,
-				283B8A672053730100681FA0 /* ViewController.m */,
 				283B8A6C2053730100681FA0 /* Assets.xcassets */,
 				283B8A6E2053730100681FA0 /* LaunchScreen.storyboard */,
 				283B8A712053730100681FA0 /* Info.plist */,
@@ -105,7 +114,7 @@
 				283B8A5C2053730100681FA0 /* Sources */,
 				283B8A5D2053730100681FA0 /* Frameworks */,
 				283B8A5E2053730100681FA0 /* Resources */,
-				AAB25BB6F931485848956546 /* [CP] Embed Pods Frameworks */,
+				BF7932222234E9154ED04A8C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,7 +164,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				283B8A702053730100681FA0 /* LaunchScreen.storyboard in Resources */,
+				2833595D20AEAD4F002E2A42 /* test-h5.zip in Resources */,
 				283B8A6D2053730100681FA0 /* Assets.xcassets in Resources */,
+				2833595E20AEAD4F002E2A42 /* test-react.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,14 +191,14 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AAB25BB6F931485848956546 /* [CP] Embed Pods Frameworks */ = {
+		BF7932222234E9154ED04A8C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh",
-				"${PODS_ROOT}/Ground/.axe/Ground.framework",
+				"${PODS_ROOT}/Ground/axe/Ground.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -205,7 +216,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				283B8A682053730100681FA0 /* ViewController.m in Sources */,
 				283B8A732053730100681FA0 /* main.m in Sources */,
 				283B8A652053730100681FA0 /* AppDelegate.m in Sources */,
 			);

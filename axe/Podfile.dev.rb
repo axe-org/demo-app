@@ -9,5 +9,8 @@ target 'Demo' do
   pod 'Bugly'
 
   # axe管理的组件
-  AXE_PODFILE
+  
+  pod 'Ground/release' , '>= 0.0.1-beta.0', '< 0.0.1'
+  pod 'Login/release' , '>= 0.0.2-beta.0', '< 0.0.2'
+  pod 'Test/release' , '>= 0.0.1-beta.0', '< 0.0.1'
 end
