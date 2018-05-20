@@ -20,3 +20,9 @@ demo app using axe
 使用 `axe-admin`管理平台 ， 地址为 ： [demo.axe-org.cn](https://demo.axe-org.cn)
 
 `axe`平台化的APP，使用[fastlane](https://github.com/axe-org/fastlane)
+
+
+## 说明
+
+需要安装 `git-lfs` ，`CocoaPods`  以及`fastlane`
+
