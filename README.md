@@ -26,3 +26,16 @@ demo app using axe
 
 需要安装 `git-lfs` ，`CocoaPods`  以及`fastlane`
 
+## 再介绍一下如何创建一个模块
+
+首先在创建`fastlane`目录，放置一个`Fastfile` ，其中内容为 ：
+
+	import_from_git(url: 'https://github.com/axe-org/fastlane', branch: 'v0.2')
+
+然后输入命令
+	
+	fastlane axe_init_module
+
+详细的配置在`axe`文件夹下， `Axefile` 、`Podfile`和`Podspec`三个文件中。
+
+之后会完善文档，这里先简要说明一下。
