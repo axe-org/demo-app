@@ -26,6 +26,20 @@ demo app using axe
 
 需要安装 `git-lfs` ，`CocoaPods`  以及`fastlane`
 
+## 说明一下 git-lfs的安装
+
+[git-lfs](https://git-lfs.github.com) : 是 `git`的扩展，以将大文件接入到`git`的版本管理中。
+
+安装 ：
+
+	brew install git-lfs
+	git lfs install
+	
+`CocoaPods`在使用`git-lfs`后，要进行清理：
+
+	rm -rf /Users/$USER/Library/Caches/CocoaPods
+	pod cache clean --all
+
 ## 再介绍一下如何创建一个模块
 
 首先在创建`fastlane`目录，放置一个`Fastfile` ，其中内容为 ：
