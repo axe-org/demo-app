@@ -24,7 +24,11 @@ demo app using axe
 
 ## 说明
 
-需要安装 `git-lfs` ，`CocoaPods`  以及`fastlane`
+需要安装 `git-lfs` ，`CocoaPods`  以及`fastlane`.
+
+`demo`使用`CocoaPods`私有仓库，所以使用`fastlane`进行操作前，需要执行命令：
+
+	pod repo add axe-demo "https://github.com/axe-org/demo-private-spec.git
 
 ## git-lfs
 
