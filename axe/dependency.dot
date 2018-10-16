@@ -1,7 +1,0 @@
-digraph G {
-  "Bugly(2.5.0)";
-  "Ground(0.0.1)";
-  "Login(0.0.2)";
-  "Test(0.0.1)";
-  "Test(0.0.1)" -> "Login(0.0.2)" [ label = "(~> 0.0)" ];
-}

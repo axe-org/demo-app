@@ -70,12 +70,6 @@ fastlane axe_init_module
 ```
 `axe_init_module` : 脚手架模式，以快速搭建一个标准的module
 
-TODO 暂时不会实现。
-
-参数：
-
-
-
 ----
 
 This README.md is auto-generated and will be re-generated every time [fastlane](https://fastlane.tools) is run.

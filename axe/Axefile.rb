@@ -10,9 +10,9 @@ AxeConfig.new do |s|
   # 当前设置版本 ，设定版本号必须为三段式，遵循语义化版本号规范。
   # dev发布的版本 为 0.0.1-beta.x 会自动跟随打包添加版本号x , 而发布的prd版本，只能发布一次，版本号为 0.0.1
   # 版本号对于 module类型是必须的， 对于app 不需要版本号。
-  s.version      = "0.1.0"
+  s.version      = "0.2.0"
   # 设定podspec仓库名，一般会用私有仓库来存储。 对module类型必须
-  s.podRepo      = "axe-demo"
+  s.pod_repo      = "axe-demo"
   # type有两种 ， app ， module 和 ground. 必须 
   # ground属于module, 只是会有一些更特殊的处理， 在构建的时候，会处理依赖的头文件。
   s.type         = "app"

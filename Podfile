@@ -10,7 +10,7 @@ target 'Demo' do
 
   # axe管理的组件
   
-  pod 'Ground/release' , '0.0.1'
-  pod 'Login/release' , '0.0.2'
-  pod 'Test/release' , '0.0.1'
+  pod 'Ground/release' , '>= 0.1.0-beta.0', '< 0.1.0'
+  pod 'Login/release' , '>= 0.2.0-beta.0', '< 0.2.0'
+  pod 'Test/release' , '>= 0.1.0-beta.0', '< 0.1.0'
 end
